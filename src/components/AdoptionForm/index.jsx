@@ -1,9 +1,26 @@
 import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import "./adoption-form.css";
 
+const schema = z.object({
+  petId: z.string().min(1, "Escolha pelo menos um pet."),
+  name: z.string().min(2, "Digite seu nome completo."),
+  email: z.email("Digite um email válido"),
+  whatsapp: z.string().min(1, "Use o DDD e os nove dígitos"),
+  birthDate: z.string().min(1, "informe a data de nascimento."),
+  housing: z.string().min(1, "Escolha um a moradia"),
+  reason: z.string().min(20, "Conte um pouco mais..."),
+  terms: z.literal(true, "aceite os termos!"),
+});
+
 export default function AdoptionForm({ pets }) {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: zodResolver(schema) });
 
   function submitForm(data) {
     console.log(data);
@@ -23,15 +40,19 @@ export default function AdoptionForm({ pets }) {
             </option>
           ))}
         </select>
+        {errors.petId && <p className="error"> {errors.petId.message}</p>}
       </div>
       <div className="field">
         <label htmlFor="name">Nome Completo</label>
         <input id="name" name="name" type="text" {...register("name")} />
+        {errors.name && <p className="error"> {errors.name.message} </p>}
       </div>
       <div className="field">
         <label htmlFor="email">E-mail</label>
         <input id="email" name="email" type="email" {...register("email")} />
+        {errors.email && <p className="errors"> {errors.email.message}</p>}
       </div>
+
       <div className="field">
         <label htmlFor="whatsapp">Whatsapp</label>
         <input
@@ -41,6 +62,7 @@ export default function AdoptionForm({ pets }) {
           {...register("whatsapp")}
         />
         <p className="hint">Com DDD, Pode usar espaço, hífen e parênteses.</p>
+        {errors.whatsapp && <p>{errors.whatsapp.message}</p>}
       </div>
       <div className="field">
         <label htmlFor="birthDate">Data de Nascimento</label>
@@ -50,6 +72,7 @@ export default function AdoptionForm({ pets }) {
           type="date"
           {...register("birthDate")}
         />
+        {errors.birthDate && <p>{errors.birthDate.message}</p>}
       </div>
       <div className="field">
         <label htmlFor="housing">Moradia</label>
@@ -59,10 +82,12 @@ export default function AdoptionForm({ pets }) {
           <option value="casa-sem-quintal">Casa sem quintal</option>
           <option value="apartamento">Apartamento</option>
         </select>
+        {errors.housing && <p>{errors.housing.message}</p>}
       </div>
       <div className="field">
         <label htmlFor="reason">Por que você quer adotar</label>
         <textarea name="reason" id="reason" {...register("reason")}></textarea>
+        {errors.reason && <p>{errors.reason.message}</p>}
       </div>
 
       <div className="field field-check">
@@ -70,6 +95,7 @@ export default function AdoptionForm({ pets }) {
         <label htmlFor="terms">
           Li e concordo com o termo de adoção responsável.
         </label>
+        {errors.terms && <p>{errors.terms.message}</p>}
       </div>
       <button type="submit">Enviar interesse</button>
     </form>
