@@ -1,0 +1,73 @@
+.adoption-form h2 {
+  margin: 20px 0 8px;
+  font-size: 18px;
+}
+
+.adoption-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.field input,
+.field select,
+.field textarea {
+  padding: 8px;
+  border: 1px solid #cfc6b8;
+  border-radius: 8px;
+  background-color: #fff;
+  font: inherit;
+}
+
+.field textarea {
+  min-height: 80px;
+  resize: none;
+}
+
+.field-check {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.field-check label {
+  font-weight: normal;
+}
+
+.hint {
+  font-size: 12px;
+  color: #6b6158;
+}
+
+.error {
+  width: 100%;
+  font-size: 13px;
+  color: #b91c1c;
+}
+
+.adoption-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #c2410c;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.adoption-form button:disabled {
+  background-color: #d6c9bb;
+  color: #5e544b;
+}

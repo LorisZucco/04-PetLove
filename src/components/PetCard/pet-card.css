@@ -1,0 +1,38 @@
+.pet-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border: 1px solid #e7dfd2;
+  border-radius: 12px;
+  background-color: #fff;
+}
+
+.pet-emoji {
+  font-size: 28px;
+}
+
+.pet-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.pet-info h3 {
+  font-size: 16px;
+}
+
+.pet-info p {
+  font-size: 13px;
+  color: #6b6158;
+}
+
+.pet-card button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #c2410c;
+  color: #fff;
+  font-size: 13px;
+  white-space: nowrap;
+}
