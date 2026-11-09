@@ -28,11 +28,11 @@
   border-radius: 8px;
   background-color: #fff;
   font: inherit;
-  resize: none;
 }
 
 .field textarea {
   min-height: 80px;
+  resize: none;
 }
 
 .field-check {
@@ -65,4 +65,9 @@
   color: #fff;
   font-size: 16px;
   font-weight: bold;
+}
+
+.adoption-form button:disabled {
+  background-color: #d6c9bb;
+  color: #5e544b;
 }
